@@ -1,0 +1,25 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model user {
+  user_id                 Int     @unique @default(autoincrement())
+  name                    String
+  email                   String  @unique
+  mobile                  Int     @unique
+  city                    String
+  onlinepresence_insta    String? @unique
+  onlinepresence_linkedin String? @unique
+  onlinepresence_facebook String? @unique
+  onlinepresence_github   String? @unique
+  onlinepresenc_leetcode  String? @unique
+  onlinepresenc_youtube   String? @unique
+  image                   String?
+
+  @@id([user_id, email])
+}
