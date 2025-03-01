@@ -1,10 +1,11 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect ,useRef} from "react";
 import { Project } from "@/types/types";
 const Work = () => {
   const [selectedProject, setSelectedProject] = useState<number | null>(0);
   const [projects, setProjects] = useState<Project[]>([]);
   const [experienceText, setExperienceText] = useState("");
+  const projectListRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -18,6 +19,10 @@ const Work = () => {
 
   const handleProjectClick = (index:number) => {
     setSelectedProject(index);
+    projectListRef.current?.children[index]?.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+    });
   };
 
   return (
@@ -47,7 +52,10 @@ const Work = () => {
       {/* Project List */}
       <section className="mt-32 grid grid-cols-1 md:grid-cols-2 gap-12">
         {/* Left: Scrollable Project Names (Left aligned & Auto-scroll) */}
-        <div className="flex flex-col space-y-6 overflow-y-auto scrollbar-none h-[50vh]">
+        <div
+          ref={projectListRef}
+          className="flex flex-col space-y-6 overflow-y-auto h-[50vh] no-scrollbar hover:overflow-y-scroll"
+        >
           {projects.map((project, index) => (
             <button
               key={index}
