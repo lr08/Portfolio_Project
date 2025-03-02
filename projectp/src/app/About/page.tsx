@@ -41,7 +41,7 @@ const About = () => {
           width={800}
           height={500}
           alt="Profile"
-          className="max-w-3xl rounded-lg"
+          className="w-full max-w-xs sm:max-w-sm md:max-w-lg lg:max-w-xl xl:max-w-3xl h-auto rounded-lg object-cover"
         />
       </div>
 
