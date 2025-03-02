@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { Profile } from "@/types/types"; 
+import { Profile } from "@/types/types";
 
 const About = () => {
   const [profile, setProfile] = useState<Profile | null>(null);
@@ -49,11 +49,7 @@ const About = () => {
       <section className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-20">
         {profile.summary.map((paragraph, index) => (
           <div key={index}>
-            <p
-              className="text-lg leading-relaxed"
-            >
-              {paragraph}
-            </p>
+            <p className="text-lg leading-relaxed">{paragraph}</p>
           </div>
         ))}
       </section>
@@ -63,14 +59,15 @@ const About = () => {
         <h3 className="text-xl uppercase font-light tracking-wide">
           01 Software Skills
         </h3>
-        <div className="grid grid-cols-3 md:grid-cols-4 gap-4 mt-6 text-lg">
+        <div className="flex flex-wrap gap-4 mt-6 text-lg">
           {profile.skills.map((skill, index) => (
-            <p key={index}>{skill}</p>
+            <p key={index} className="bg-gray-800 px-3 py-1 rounded-md">
+              {skill}
+            </p>
           ))}
         </div>
       </section>
 
-      {/* Work Experience */}
       <section className="mb-20">
         <h3 className="text-xl uppercase font-light tracking-wide">
           02 Work Experience
@@ -82,16 +79,34 @@ const About = () => {
               <div>Role</div>
               <div>Duration</div>
             </div>
-            {profile.experience.map((exp, index) => (
-              <div
-                key={index}
-                className="grid grid-cols-3 gap-6 text-lg border-b border-gray-700 py-2"
-              >
-                <div>{exp.company}</div>
-                <div>{exp.role}</div>
-                <div>{exp.duration}</div>
-              </div>
-            ))}
+            {profile.experience.map((exp, index) =>
+              exp.clients ? (
+                // Parent company with clients
+                <div key={index} className="border-b border-gray-700 py-2">
+                  <div className="text-lg font-bold">{exp.company} </div>
+                  {exp.clients.map((client, clientIndex) => (
+                    <div
+                      key={clientIndex}
+                      className="grid grid-cols-3 gap-6 text-lg border-t border-gray-600 py-2 ml-4"
+                    >
+                      <div>{client.company}</div>
+                      <div>{client.role}</div>
+                      <div>{client.duration}</div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                // Individual experience
+                <div
+                  key={index}
+                  className="grid grid-cols-3 gap-6 text-lg border-b border-gray-700 py-2"
+                >
+                  <div>{exp.company}</div>
+                  <div>{exp.role}</div>
+                  <div>{exp.duration}</div>
+                </div>
+              )
+            )}
           </div>
         </div>
       </section>

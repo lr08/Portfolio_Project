@@ -49,7 +49,7 @@ const ContactUs = () => {
         <div>
           <h2 className="text-5xl font-bold">Get in Touch</h2>
           <p className="text-lg mt-4">
-            Feel free to reach out via LinkedIn, GitHub, email, or phone. You can also use the form below.
+            Feel free to reach out via LinkedIn, GitHub, email, or phone. You can also use the given form .
           </p>
 
           <div className="mt-6 space-y-4">

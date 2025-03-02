@@ -1,7 +1,14 @@
-export interface Experience {
+export interface ClientExperience {
   company: string;
   role: string;
   duration: string;
+}
+
+export interface Experience {
+  company: string;
+  role?: string; // Optional for parent companies
+  duration?: string; // Optional for parent companies
+  clients?: ClientExperience[]; // Clients if the company is a parent
 }
 
 export interface Project {
