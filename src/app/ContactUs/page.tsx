@@ -11,7 +11,9 @@ const ContactUs = () => {
     initialValues: { name: "", email: "", message: "" },
     validationSchema: Yup.object({
       name: Yup.string().required("Name is required"),
-      email: Yup.string().email("Invalid email address").required("Email is required"),
+      email: Yup.string()
+        .email("Invalid email address")
+        .required("Email is required"),
       message: Yup.string().required("Message cannot be empty"),
     }),
     onSubmit: async (values, { resetForm }) => {
@@ -49,26 +51,38 @@ const ContactUs = () => {
         <div>
           <h2 className="text-5xl font-bold">Get in Touch</h2>
           <p className="text-lg mt-4">
-            Feel free to reach out via LinkedIn, GitHub, email, or phone. You can also use the given form .
+            Feel free to reach out via LinkedIn, GitHub, email, or phone. You
+            can also use the given form .
           </p>
 
           <div className="mt-6 space-y-4">
             <p className="text-xl">
               📧 Email:{" "}
-              <Link href="mailto:lakshay.rawall08@gmail.com" className="underline">
-              lakshay.rawall08@gmail.com
+              <Link
+                href="mailto:lakshay.rawall08@gmail.com"
+                className="underline"
+              >
+                lakshay.rawall08@gmail.com
               </Link>
             </p>
             <p className="text-xl">📞 Phone: +91 8383868987</p>
             <p className="text-xl">
               🔗 LinkedIn:{" "}
-              <Link href="https://linkedin.com/in/lakshay13" className="underline" target="_blank">
+              <Link
+                href="https://linkedin.com/in/lakshay13"
+                className="underline"
+                target="_blank"
+              >
                 linkedin.com/in/lakshay13
               </Link>
             </p>
             <p className="text-xl">
               💻 GitHub:{" "}
-              <Link href="https://github.com/lr08" className="underline" target="_blank">
+              <Link
+                href="https://github.com/lr08"
+                className="underline"
+                target="_blank"
+              >
                 github.com/lr08
               </Link>
             </p>
@@ -88,7 +102,9 @@ const ContactUs = () => {
               onBlur={formik.handleBlur}
               className="w-full p-3 bg-gray-800 border border-gray-700 rounded text-white"
             />
-            {formik.touched.name && formik.errors.name && <p className="text-red-500">{formik.errors.name}</p>}
+            {formik.touched.name && formik.errors.name && (
+              <p className="text-red-500">{formik.errors.name}</p>
+            )}
 
             <input
               type="email"
@@ -99,7 +115,9 @@ const ContactUs = () => {
               onBlur={formik.handleBlur}
               className="w-full p-3 bg-gray-800 border border-gray-700 rounded text-white"
             />
-            {formik.touched.email && formik.errors.email && <p className="text-red-500">{formik.errors.email}</p>}
+            {formik.touched.email && formik.errors.email && (
+              <p className="text-red-500">{formik.errors.email}</p>
+            )}
 
             <textarea
               name="message"
@@ -110,7 +128,9 @@ const ContactUs = () => {
               onBlur={formik.handleBlur}
               className="w-full p-3 bg-gray-800 border border-gray-700 rounded text-white"
             />
-            {formik.touched.message && formik.errors.message && <p className="text-red-500">{formik.errors.message}</p>}
+            {formik.touched.message && formik.errors.message && (
+              <p className="text-red-500">{formik.errors.message}</p>
+            )}
 
             <button
               type="submit"

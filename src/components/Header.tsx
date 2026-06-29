@@ -27,7 +27,7 @@ const Header = () => {
         <div className="border border-white px-5 py-2 rounded-full flex items-center space-x-2 relative">
           <span className="text-white text-xl font-semibold tracking-wide">
             Lakshay Rawal
-          </span>         
+          </span>
         </div>
       </Link>
 

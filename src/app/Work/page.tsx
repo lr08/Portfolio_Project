@@ -1,29 +1,25 @@
 "use client";
-import React, { useState, useEffect ,useRef} from "react";
-import { Project } from "@/types/types";
+import React, { useState, useRef } from "react";
+import { useProfile } from "@/context/ProfileContext";
+import { WorkSkeleton } from "@/components/LoadingSkeleton";
+
 const Work = () => {
+  const { profile, isLoading } = useProfile();
   const [selectedProject, setSelectedProject] = useState<number | null>(0);
-  const [projects, setProjects] = useState<Project[]>([]);
-  const [experienceText, setExperienceText] = useState("");
   const projectListRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    async function fetchData() {
-      const res = await fetch("/api/profile");
-      const data = await res.json();
-      setProjects(data.projects);
-      setExperienceText(data.about);
-    }
-    fetchData();
-  }, []);
+  const projects = profile?.projects ?? [];
+  const experienceText = profile?.about ?? "";
 
-  const handleProjectClick = (index:number) => {
+  const handleProjectClick = (index: number) => {
     setSelectedProject(index);
     projectListRef.current?.children[index]?.scrollIntoView({
       behavior: "smooth",
       block: "nearest",
     });
   };
+
+  if (isLoading || !profile) return <WorkSkeleton />;
 
   return (
     <div className="bg-black text-white min-h-screen px-10 md:px-32 py-20 pt-32 md:pt-40">

@@ -1,21 +1,13 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Image from "next/image";
-import { Profile } from "@/types/types";
+import { useProfile } from "@/context/ProfileContext";
+import { AboutSkeleton } from "@/components/LoadingSkeleton";
 
 const About = () => {
-  const [profile, setProfile] = useState<Profile | null>(null);
+  const { profile, isLoading } = useProfile();
 
-  useEffect(() => {
-    async function fetchData() {
-      const res = await fetch("/api/profile");
-      const data: Profile = await res.json();
-      setProfile(data);
-    }
-    fetchData();
-  }, []);
-
-  if (!profile) return <p>Loading...</p>;
+  if (isLoading || !profile) return <AboutSkeleton />;
 
   return (
     <div className="bg-black text-white min-h-screen px-10 md:px-32 py-20 pt-32 md:pt-40">
@@ -105,7 +97,7 @@ const About = () => {
                   <div>{exp.role}</div>
                   <div>{exp.duration}</div>
                 </div>
-              )
+              ),
             )}
           </div>
         </div>

@@ -6,15 +6,21 @@ const Hero = () => {
   return (
     <div className="relative w-full min-h-screen flex items-center justify-center bg-black overflow-auto">
       {/* Background Video */}
-      <video 
+      <video
         className="absolute top-0 left-0 w-full h-full object-cover"
-        autoPlay 
-        loop 
-        muted 
+        autoPlay
+        loop
+        muted
         playsInline
       >
-        <source src="https://uploads-ssl.webflow.com/65b7bac85c1092089d510616/65b8c737f3618d8dd99da139_VIDEO HOME (DSK)-transcode.mp4" type="video/mp4" />
-        <source src="https://uploads-ssl.webflow.com/65b7bac85c1092089d510616/65b8c737f3618d8dd99da139_VIDEO HOME (DSK)-transcode.webm" type="video/webm" />
+        <source
+          src="https://uploads-ssl.webflow.com/65b7bac85c1092089d510616/65b8c737f3618d8dd99da139_VIDEO HOME (DSK)-transcode.mp4"
+          type="video/mp4"
+        />
+        <source
+          src="https://uploads-ssl.webflow.com/65b7bac85c1092089d510616/65b8c737f3618d8dd99da139_VIDEO HOME (DSK)-transcode.webm"
+          type="video/webm"
+        />
       </video>
 
       {/* Dark Overlay for Better Readability */}
@@ -30,7 +36,10 @@ const Hero = () => {
           className="text-[8vw] md:text-[10vw] font-bold uppercase leading-none tracking-wide font-sans text-left w-full mt-6"
           style={{ fontFamily: "Calibri, sans-serif" }}
         >
-          <span className="italic font-light normal-case text-[4vw] md:text-[5vw]">I&apos;m a</span> FULL-STACK
+          <span className="italic font-light normal-case text-[4vw] md:text-[5vw]">
+            I&apos;m a
+          </span>{" "}
+          FULL-STACK
         </motion.h1>
 
         {/* Second Line - Right Aligned */}
@@ -41,8 +50,11 @@ const Hero = () => {
           className="text-[8vw] md:text-[10vw] font-bold uppercase leading-none tracking-wide font-sans text-right w-full mt-6"
           style={{ fontFamily: "Calibri, sans-serif" }}
         >
-          DEVELOPER 
-          <span className="italic font-light normal-case text-[4vw] md:text-[5vw]"> &</span>
+          DEVELOPER
+          <span className="italic font-light normal-case text-[4vw] md:text-[5vw]">
+            {" "}
+            &
+          </span>
         </motion.h2>
 
         {/* Third Line - Left Aligned */}
