@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.dev-crafted.com
+
+# Sitemaps
+Sitemap: https://www.dev-crafted.com/sitemap.xml
